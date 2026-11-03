@@ -1,0 +1,292 @@
+/* ---------- Design tokens ----------
+   Subject: a multilingual AI tutor. The idea is "one notebook, many
+   languages" — an ink-dark study rail next to a warm paper page where
+   the actual learning happens. Marigold stands in for the highlighter
+   pen a student reaches for, not a generic SaaS accent.
+------------------------------------- */
+:root {
+  --ink: #1b2430;
+  --ink-soft: #26313f;
+  --paper: #efe9db;
+  --paper-bright: #f7f3ea;
+  --slate: #5b6472;
+  --marigold: #d98e04;
+  --marigold-soft: #f3d38f;
+  --rust: #b5533c;
+  --pine: #3f7a5a;
+  --line: rgba(27, 36, 48, 0.12);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::selection { background: var(--marigold-soft); }
+
+/* ---------- App shell ---------- */
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+}
+
+@media (max-width: 860px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--ink);
+  color: var(--paper-bright);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.brand small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: rgba(247, 243, 234, 0.55);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.sidebar-section h4 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(247, 243, 234, 0.5);
+  margin: 0 0 10px 0;
+}
+
+.lang-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lang-pill {
+  border: 1px solid rgba(247, 243, 234, 0.2);
+  background: transparent;
+  color: var(--paper-bright);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.lang-pill.active {
+  background: var(--marigold);
+  border-color: var(--marigold);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: rgba(247, 243, 234, 0.75);
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+.nav-item:hover { background: rgba(247, 243, 234, 0.08); }
+.nav-item.active {
+  background: rgba(217, 142, 4, 0.18);
+  color: var(--paper-bright);
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: rgba(247, 243, 234, 0.4);
+}
+
+/* ---------- Main panel ---------- */
+.main-panel {
+  background: var(--paper-bright);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.topic-bar {
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.topic-bar input {
+  flex: 1;
+  max-width: 320px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Chat ---------- */
+.chat-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.empty-state {
+  margin: auto;
+  text-align: center;
+  max-width: 420px;
+  color: var(--slate);
+}
+
+.empty-state h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.msg-row { display: flex; }
+.msg-row.user { justify-content: flex-end; }
+
+.msg-bubble {
+  max-width: 640px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  line-height: 1.55;
+  font-size: 0.96rem;
+  white-space: pre-wrap;
+}
+
+.msg-row.user .msg-bubble {
+  background: var(--ink);
+  color: var(--paper-bright);
+  border-bottom-right-radius: 4px;
+}
+
+.msg-row.assistant .msg-bubble {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-input-row {
+  padding: 20px 32px 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+}
+
+.chat-input-row textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--paper);
+  min-height: 52px;
+}
+
+.send-btn {
+  background: var(--marigold);
+  border: none;
+  color: var(--ink);
+  font-weight: 600;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+
+.send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Study tools panel ---------- */
+.tools-panel { padding: 32px; overflow-y: auto; flex: 1; }
+
+.tool-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.tool-card h3 {
+  font-family: var(--font-display);
+  margin: 0 0 12px 0;
+  font-size: 1.15rem;
+}
+
+.mcq-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper-bright);
+}
+
+.mcq-option.correct { border-color: var(--pine); background: rgba(63, 122, 90, 0.12); }
+.mcq-option.incorrect { border-color: var(--rust); background: rgba(181, 83, 60, 0.1); }
+
+.flashcard {
+  background: var(--ink);
+  color: var(--paper-bright);
+  border-radius: 14px;
+  padding: 24px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.status-text { color: var(--slate); font-size: 0.85rem; }

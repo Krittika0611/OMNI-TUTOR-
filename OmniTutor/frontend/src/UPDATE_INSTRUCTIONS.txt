@@ -1,0 +1,34 @@
+HOW TO APPLY THIS UPDATE
+=========================
+
+This zip contains an updated "src" folder for your OmniTutor frontend,
+adding: a landing page, a login/signup page, and a logout button —
+the dashboard (chat/quiz/etc.) now only shows after logging in.
+
+STEPS:
+
+1. Fully quit the frontend dev server if it's running (Ctrl+C in that terminal).
+
+2. Go to your project folder:
+   OmniTutor\OmniTutor\frontend\src
+
+3. Delete the OLD "src" folder's contents are being replaced — easiest way:
+   - Rename your current "src" folder to "src_old" (as a backup, just in case).
+   - Extract this zip's "src" folder into the "frontend" folder, so you now
+     have a fresh "frontend\src" folder with all the new files in it.
+
+4. Double check nothing from src_old was custom/important to you, then you
+   can delete src_old once you've confirmed the app works.
+
+5. Restart the frontend:
+   cd frontend
+   npm run dev
+
+6. Visit localhost:5173 — you should now see:
+   - A landing page with "OmniTutor" and a "Get Started" button
+   - A login/signup form (try Sign Up first, since you have no account yet)
+   - After signing up, the normal dashboard you had before
+
+NOTE: Signup/login talk to your backend's /auth/register and /auth/login
+endpoints, which were already built — nothing changes on the backend side.
+Make sure your backend (uvicorn) and MongoDB are running before testing this.

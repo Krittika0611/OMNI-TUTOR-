@@ -1,0 +1,17 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pymongo==4.8.0
+motor==3.5.1
+python-dotenv==1.0.1
+pydantic==2.9.2
+openai==1.51.0
+deep-translator==1.11.4
+sentence-transformers==3.1.1
+faiss-cpu==1.9.0.post1
+pypdf==5.0.1
+numpy==2.1.1
+python-multipart==0.0.9
+SpeechRecognition==3.10.4
+gTTS==2.5.3
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0

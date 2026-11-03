@@ -1,0 +1,78 @@
+/* ---------- Landing + Auth screens ---------- */
+.landing-screen {
+  height: 100vh;
+  width: 100%;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.landing-content {
+  text-align: center;
+}
+
+.landing-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--paper-bright);
+  font-size: 3.2rem;
+  margin: 0 0 8px 0;
+}
+
+.landing-tagline {
+  color: rgba(247, 243, 234, 0.6);
+  font-size: 1rem;
+  margin: 0 0 32px 0;
+}
+
+.landing-btn {
+  padding: 14px 36px;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+
+.auth-card {
+  background: var(--paper-bright);
+  border-radius: 18px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.auth-card .landing-title {
+  color: var(--ink);
+  font-size: 1.8rem;
+}
+
+.auth-card .landing-tagline {
+  color: var(--slate);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.auth-form input {
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.auth-toggle-link {
+  background: none;
+  border: none;
+  color: var(--marigold);
+  font-weight: 600;
+  padding: 0;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
