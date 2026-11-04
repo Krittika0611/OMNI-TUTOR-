@@ -10,19 +10,22 @@ load_dotenv()
 
 
 class Settings:
+    
     # LLM
-        # LLM
-    LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "ollama")
+    LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "groq")
 
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
     OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
     OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "llama3")
-    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
-    GROQ_BASE_URL: str = os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1")
-    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
+    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+    GROQ_BASE_URL: str = os.getenv(
+    "GROQ_BASE_URL",
+    "https://api.groq.com/openai/v1"
+    )
+    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
     # Database
     MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017")
     MONGO_DB_NAME: str = os.getenv("MONGO_DB_NAME", "omnitutor")

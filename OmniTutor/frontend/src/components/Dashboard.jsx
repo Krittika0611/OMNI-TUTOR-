@@ -1,13 +1,15 @@
-import PdfPanel from "./PdfPanel.jsx";
+
 import { useState } from "react";
 import Sidebar from "./Sidebar.jsx";
+import HomeDashboard from "./HomeDashboard.jsx";
 import ChatWindow from "./ChatWindow.jsx";
+import PdfPanel from "./PdfPanel.jsx";
 import StudyToolsPanel from "./StudyToolsPanel.jsx";
 import ProgressPanel from "./ProgressPanel.jsx";
 
 export default function Dashboard({ userId, onLogout }) {
   const [language, setLanguage] = useState("en");
-  const [activeView, setActiveView] = useState("chat");
+  const [activeView, setActiveView] = useState("home");
 
   return (
     <div className="app-shell">
@@ -18,13 +20,34 @@ export default function Dashboard({ userId, onLogout }) {
         setActiveView={setActiveView}
         onLogout={onLogout}
       />
+
       <main className="main-panel">
-        {activeView === "pdf" && <PdfPanel language={language} userId={userId} />}
-        {activeView === "chat" && <ChatWindow language={language} userId={userId} />}
-        {["mcqs", "flashcards", "summary", "practice"].includes(activeView) && (
-          <StudyToolsPanel view={activeView} language={language} userId={userId} />
+        {activeView === "home" && (
+          <HomeDashboard
+            userId={userId}
+            setActiveView={setActiveView}
+          />
         )}
-        {activeView === "progress" && <ProgressPanel userId={userId} />}
+
+        {activeView === "chat" && (
+          <ChatWindow language={language} userId={userId} />
+        )}
+
+        {activeView === "pdf" && (
+          <PdfPanel language={language} userId={userId} />
+        )}
+
+        {["mcqs", "flashcards", "summary", "practice"].includes(activeView) && (
+          <StudyToolsPanel
+            view={activeView}
+            language={language}
+            userId={userId}
+          />
+        )}
+
+        {activeView === "progress" && (
+          <ProgressPanel userId={userId} />
+        )}
       </main>
     </div>
   );

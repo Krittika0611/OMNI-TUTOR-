@@ -6,3 +6,41 @@ node_modules/
 venv/
 __pycache__/
 *.pyc
+# Environment secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python generated files
+**/__pycache__/
+*.py[cod]
+
+# Virtual environments
+**/venv/
+**/.venv/
+
+# Generated documents
+OmniTutor/backend/data/documents/
+
+# Temporary frontend archives
+OmniTutor/frontend/src.zip
+OmniTutor/frontend/src_old.zip
+# Ignore generated documents
+**/data/documents/
+
+# Ignore temporary ZIP archives
+**/src.zip
+**/src_old.zip
+
+# Ignore environment files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Ignore Python cache
+**/__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+**/venv/
+**/.venv/
